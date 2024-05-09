@@ -1,0 +1,32 @@
+import tkinter as tk
+from tkinter import messagebox
+
+class NebulizerApp:
+    def __init__(self, master):
+        self.master = master
+        master.title("Nebulizador")
+
+        self.label = tk.Label(master, text="Control del Nebulizador")
+        self.label.pack()
+
+        self.start_button = tk.Button(master, text="Comenzar Nebulización", command=self.start_nebulization)
+        self.start_button.pack()
+
+        self.stop_button = tk.Button(master, text="Detener Nebulización", command=self.stop_nebulization, state=tk.DISABLED)
+        self.stop_button.pack()
+
+    def start_nebulization(self):
+        # Aquí colocarías el código para iniciar la nebulización
+        messagebox.showinfo("Nebulizador", "Nebulización iniciada")
+        self.start_button.config(state=tk.DISABLED)
+        self.stop_button.config(state=tk.NORMAL)
+
+    def stop_nebulization(self):
+        # Aquí colocarías el código para detener la nebulización
+        messagebox.showinfo("Nebulizador", "Nebulización detenida")
+        self.start_button.config(state=tk.NORMAL)
+        self.stop_button.config(state=tk.DISABLED)
+
+root = tk.Tk()
+app = NebulizerApp(root)
+root.mainloop()
